@@ -1,11 +1,12 @@
 using System;
 using System.Threading.Tasks;
+using EmployeeTimesheet.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace EmployeeTimesheet.Extensions
 {
     public class UsernameAsPasswordValidator<TUser> : IPasswordValidator<TUser>
-    where TUser : IdentityUser
+    where TUser : ApplicationUser
     {
         public Task<IdentityResult> ValidateAsync(UserManager<TUser> manager, TUser user, string password)
         {

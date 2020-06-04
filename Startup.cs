@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EmployeeTimesheet.Models;
 using EmployeeTimesheet.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -14,6 +15,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using EmployeeTimesheet.Models.Settings;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
+using EmployeeTimesheet.Services;
 
 namespace EmployeeTimesheet
 {
@@ -34,7 +39,7 @@ namespace EmployeeTimesheet
                 mySqlOptions => mySqlOptions.EnableRetryOnFailure()));
 
             services
-            .AddIdentity<IdentityUser, IdentityRole>(options =>
+            .AddIdentity<ApplicationUser, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequireUppercase = true;
@@ -46,7 +51,32 @@ namespace EmployeeTimesheet
             })
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders()
-            .AddPasswordValidator<UsernameAsPasswordValidator<IdentityUser>>();
+            .AddPasswordValidator<UsernameAsPasswordValidator<ApplicationUser>>();
+
+            var jwtSection = Configuration.GetSection("JWTSettings");
+            services.Configure<JWT>(jwtSection);
+
+            //validating token sent by client
+            var appSettings = jwtSection.Get<JWT>();
+            var key = Encoding.ASCII.GetBytes(appSettings.SecretKey);
+
+            services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+            services.AddScoped<IUserService, UserService>();
 
             services.AddControllers();
         }
