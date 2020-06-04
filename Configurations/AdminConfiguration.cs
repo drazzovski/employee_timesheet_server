@@ -16,11 +16,11 @@ namespace EmployeeTimesheet.Configurations
             {
                 Id = adminId,
                 UserName = "superadmin",
-                NormalizedUserName = "SUPERRADMIN",
+                NormalizedUserName = "SUPERADMIN",
                 FirstName = "Master",
                 LastName = "Admin",
                 Email = "arandjic@gmail.com",
-                NormalizedEmail = "ARANDJIC@GMAL.COM",
+                NormalizedEmail = "ARANDJIC@GMAIL.COM",
                 PhoneNumber = "0000",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true,

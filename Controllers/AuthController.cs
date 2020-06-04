@@ -35,5 +35,24 @@ namespace EmployeeTimesheet.Controllers
             return BadRequest("Not Valid"); // 400
         }
 
+
+        // api/auth/login
+        [HttpPost("Login")]
+        public async Task<IActionResult> LoginAsync(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _userService.LoginUserAsync(model);
+
+                if (result.IsSuccess)
+                {
+                    return Ok(result); // 200
+                }
+
+                return BadRequest(result);
+            }
+
+            return BadRequest("Not Valid"); // 400
+        }
     }
 }

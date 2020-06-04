@@ -45,7 +45,7 @@ namespace EmployeeTimesheet.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "Address", "BirthDate", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "2E357EEF-3591-4F7E-8CF1-120DA7016486", 0, "New Street 2", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "MD", "f42c25bd-17c4-4b60-a68c-84d14ed1ef9a", "arandjic@gmail.com", true, "Master", "Admin", false, null, "ARANDJIC@GMAL.COM", "SUPERRADMIN", "AQAAAAEAACcQAAAAEEeHa6GFWd368jXzOnAyM4eSchrFCdw+SSoN8dHiIN7R1TE5MDO6jQFFC401HPywxw==", "0000", true, "D54642F3-C41E-4C75-8138-B8B4A23C46A0", false, "superadmin" });
+                values: new object[] { "2E357EEF-3591-4F7E-8CF1-120DA7016486", 0, "New Street 2", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "MD", "f42c25bd-17c4-4b60-a68c-84d14ed1ef9a", "arandjic@gmail.com", true, "Master", "Admin", false, null, "ARANDJIC@GMAIL.COM", "SUPERADMIN", "AQAAAAEAACcQAAAAEEeHa6GFWd368jXzOnAyM4eSchrFCdw+SSoN8dHiIN7R1TE5MDO6jQFFC401HPywxw==", "0000", true, "D54642F3-C41E-4C75-8138-B8B4A23C46A0", false, "superadmin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
