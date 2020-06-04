@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EmployeeTimesheet.Migrations
 {
-    public partial class InitDatabase : Migration
+    public partial class InitV2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,7 +40,12 @@ namespace EmployeeTimesheet.Migrations
                     TwoFactorEnabled = table.Column<bool>(nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     LockoutEnabled = table.Column<bool>(nullable: false),
-                    AccessFailedCount = table.Column<int>(nullable: false)
+                    AccessFailedCount = table.Column<int>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    BirthDate = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -152,6 +157,26 @@ namespace EmployeeTimesheet.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "6CAC3ED9-597A-4319-87E4-1AB92823B152", "bb2ea291-0c92-4d10-ab5f-5b8d66f67c1d", "Administrator", "ADMINISTRATOR" },
+                    { "9E91AA16-4C34-44DD-B9E3-27A7918E401E", "4a465038-972e-47a3-8e5c-8f05f19afd22", "Nadredjeni", "NADREDJENI" },
+                    { "711E84F4-9AA5-42E0-8118-B25F4F6C2B12", "d3f6ebcc-6077-4ea9-92d3-dabd0cb6314e", "Radnik", "RADNIK" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "Address", "BirthDate", "City", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "2E357EEF-3591-4F7E-8CF1-120DA7016486", 0, "New Street 2", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "MD", "27f2d18d-e620-437e-8d2d-6973ac12e53b", "arandjic@gmail.com", true, "Master", "Admin", false, null, "ARANDJIC@GMAIL.COM", "SUPERADMIN", "AQAAAAEAACcQAAAAENo7aR1lmI5PAwx9wHWXD1JsJLZfjgyF+bOH934hQmi2q2QRTImvquegF1hCYTQ+Qg==", "0000", true, "B179D61B-AB73-4D72-9198-5D329A102FD7", false, "superadmin" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "UserId", "RoleId" },
+                values: new object[] { "2E357EEF-3591-4F7E-8CF1-120DA7016486", "6CAC3ED9-597A-4319-87E4-1AB92823B152" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

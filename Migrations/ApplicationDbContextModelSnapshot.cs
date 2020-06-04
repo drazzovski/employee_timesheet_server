@@ -103,18 +103,18 @@ namespace EmployeeTimesheet.Migrations
                             Address = "New Street 2",
                             BirthDate = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             City = "MD",
-                            ConcurrencyStamp = "f42c25bd-17c4-4b60-a68c-84d14ed1ef9a",
+                            ConcurrencyStamp = "27f2d18d-e620-437e-8d2d-6973ac12e53b",
                             Email = "arandjic@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Master",
                             LastName = "Admin",
                             LockoutEnabled = false,
-                            NormalizedEmail = "ARANDJIC@GMAL.COM",
-                            NormalizedUserName = "SUPERRADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEeHa6GFWd368jXzOnAyM4eSchrFCdw+SSoN8dHiIN7R1TE5MDO6jQFFC401HPywxw==",
+                            NormalizedEmail = "ARANDJIC@GMAIL.COM",
+                            NormalizedUserName = "SUPERADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAENo7aR1lmI5PAwx9wHWXD1JsJLZfjgyF+bOH934hQmi2q2QRTImvquegF1hCYTQ+Qg==",
                             PhoneNumber = "0000",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "D54642F3-C41E-4C75-8138-B8B4A23C46A0",
+                            SecurityStamp = "B179D61B-AB73-4D72-9198-5D329A102FD7",
                             TwoFactorEnabled = false,
                             UserName = "superadmin"
                         });
@@ -149,21 +149,21 @@ namespace EmployeeTimesheet.Migrations
                         new
                         {
                             Id = "6CAC3ED9-597A-4319-87E4-1AB92823B152",
-                            ConcurrencyStamp = "8ab1eb9f-1c5f-4fc3-948e-f02009d17e0c",
+                            ConcurrencyStamp = "bb2ea291-0c92-4d10-ab5f-5b8d66f67c1d",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "9E91AA16-4C34-44DD-B9E3-27A7918E401E",
-                            ConcurrencyStamp = "abd97102-636b-45c5-876a-a23659711a9a",
+                            ConcurrencyStamp = "4a465038-972e-47a3-8e5c-8f05f19afd22",
                             Name = "Nadredjeni",
                             NormalizedName = "NADREDJENI"
                         },
                         new
                         {
                             Id = "711E84F4-9AA5-42E0-8118-B25F4F6C2B12",
-                            ConcurrencyStamp = "ebe70d81-3f11-4773-a11a-80408458404b",
+                            ConcurrencyStamp = "d3f6ebcc-6077-4ea9-92d3-dabd0cb6314e",
                             Name = "Radnik",
                             NormalizedName = "RADNIK"
                         });
