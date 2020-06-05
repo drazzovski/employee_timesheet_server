@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using EmployeeTimesheet.Extensions;
+using Microsoft.EntityFrameworkCore.Tools;
 
 namespace EmployeeTimesheet.Models
 {

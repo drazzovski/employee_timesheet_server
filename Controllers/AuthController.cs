@@ -1,9 +1,11 @@
 using System.Threading.Tasks;
 using EmployeeTimesheet.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeTimesheet.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
@@ -37,6 +39,7 @@ namespace EmployeeTimesheet.Controllers
 
 
         // api/auth/login
+        [AllowAnonymous]
         [HttpPost("Login")]
         public async Task<IActionResult> LoginAsync(LoginViewModel model)
         {

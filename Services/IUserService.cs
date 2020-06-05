@@ -33,8 +33,7 @@ namespace EmployeeTimesheet.Services
         public async Task<UserManagerResponse> LoginUserAsync(LoginViewModel model)
         {
             var user = await _userManager.FindByNameAsync(model.UserName);
-            var user2 = await _userManager.FindByEmailAsync("arandjic@gmail.com");
-            var user3 = await _userManager.FindByIdAsync(model.UserName);
+
             if (user == null)
             {
                 return new UserManagerResponse

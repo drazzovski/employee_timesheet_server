@@ -75,6 +75,10 @@ namespace EmployeeTimesheet
                     ValidateAudience = false
                 };
             });
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
 
             services.AddScoped<IUserService, UserService>();
 
@@ -88,6 +92,12 @@ namespace EmployeeTimesheet
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(options => options
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
 
             app.UseHttpsRedirection();
 
