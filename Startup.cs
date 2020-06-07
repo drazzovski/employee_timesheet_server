@@ -75,14 +75,19 @@ namespace EmployeeTimesheet
                     ValidateAudience = false
                 };
             });
+
             services.AddCors(c =>
             {
                 c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
             });
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IZadatakService, ZadatakService>();
+            services.AddScoped<IRadniSatiService, RadniSatiService>();
 
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -17,5 +17,10 @@ namespace EmployeeTimesheet.Models
             base.OnModelCreating(modelBuilder);
             modelBuilder.Seed();
         }
+
+        public DbSet<TipZadatka> TipZadatka { get; set; }
+        public DbSet<Zadatak> Zadaci { get; set; }
+        public DbSet<RadniSati> RadniSati { get; set; }
+        public DbSet<UserType> UserTypes { get; set; }
     }
 }

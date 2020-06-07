@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace EmployeeTimesheet.Services
+namespace EmployeeTimesheet.ViewModels
 {
     public class RegisterViewModel
     {
@@ -19,5 +19,15 @@ namespace EmployeeTimesheet.Services
 
         [Required]
         public string Role { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+
+        public int UserTypeID { get; set; }
+
+        // 
+        public string ApplicationUserID { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace EmployeeTimesheet.Services
+namespace EmployeeTimesheet.ViewModels
 {
     public class LoginViewModel
     {

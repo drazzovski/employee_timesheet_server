@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using EmployeeTimesheet.Services;
+using EmployeeTimesheet.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,11 +21,11 @@ namespace EmployeeTimesheet.Controllers
 
         // api/auth/register
         [HttpPost("Register")]
-        public async Task<IActionResult> RegisterAsync([FromBody] RegisterViewModel model)
+        public async Task<IActionResult> RegisterAsync(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var result = await _userService.RegisterUserAsync(model);
+                var result = await _userService.RegisterUserAsync(model, User.Identity.Name);
 
                 if (result.IsSuccess)
                 {

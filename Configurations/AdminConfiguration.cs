@@ -27,7 +27,8 @@ namespace EmployeeTimesheet.Configurations
                 BirthDate = new DateTime(1990, 1, 1),
                 SecurityStamp = Guid.NewGuid().ToString().ToUpper(),
                 Address = "New Street 2",
-                City = "MD"
+                City = "MD",
+                UserTypeID = 1
             };
 
             admin.PasswordHash = PassGenerate(admin);

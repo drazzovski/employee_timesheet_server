@@ -12,12 +12,16 @@ namespace EmployeeTimesheet.Models
         public string Address { get; set; }
         public string City { get; set; }
         public DateTime? BirthDate { get; set; }
+        [ForeignKey("UserType")]
+        public int? UserTypeID { get; set; }
 
         [ForeignKey("ApplicationUserNadredjeni")]
         public string ApplicationUserID { get; set; }
 
         public virtual ApplicationUser ApplicationUserNadredjeni { get; set; }
+        public virtual UserType UserType { get; set; }
 
         public virtual ICollection<ApplicationUser> Nadredjeni { get; set; }
+        public ICollection<RadniSati> RadniSati { get; set; }
     }
 }

@@ -3,14 +3,16 @@ using System;
 using EmployeeTimesheet.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeTimesheet.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200606142621_user type, get radnici")]
+    partial class usertypegetradnici
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -113,7 +115,7 @@ namespace EmployeeTimesheet.Migrations
                             Address = "New Street 2",
                             BirthDate = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             City = "MD",
-                            ConcurrencyStamp = "02af0423-ff8a-4e47-9aed-6aedd6f35870",
+                            ConcurrencyStamp = "13f172c6-4478-4182-ae90-a8dd066a461e",
                             Email = "arandjic@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Master",
@@ -121,10 +123,10 @@ namespace EmployeeTimesheet.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ARANDJIC@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM5UwrFyh9J5mq+OP3jXecpZD6Q9Uvg2rr1d9RgNo6FBf7faz6e45cfkyqw6sn+MXw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEHGevllQ12gm8DtFfS5QdDuo1ePoApBSIsQLlgOXaCNfABx54NgYtUMiohKg9/1vMQ==",
                             PhoneNumber = "0000",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "86BAA9B3-96C2-467B-8145-DB3196C54B9E",
+                            SecurityStamp = "25969C4E-584A-4AE7-BD4B-478D38AEEAF0",
                             TwoFactorEnabled = false,
                             UserName = "superadmin",
                             UserTypeID = 1
@@ -195,7 +197,7 @@ namespace EmployeeTimesheet.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserTypes");
+                    b.ToTable("UserType");
 
                     b.HasData(
                         new
@@ -278,21 +280,21 @@ namespace EmployeeTimesheet.Migrations
                         new
                         {
                             Id = "6CAC3ED9-597A-4319-87E4-1AB92823B152",
-                            ConcurrencyStamp = "7e0ce40a-9694-449b-ae60-9c423ddb3394",
+                            ConcurrencyStamp = "8fe63bd2-fa9c-4799-8852-5bcebbe6d14b",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "9E91AA16-4C34-44DD-B9E3-27A7918E401E",
-                            ConcurrencyStamp = "e1bbacc7-737a-48a1-88df-121f4dee11f9",
+                            ConcurrencyStamp = "d3818fb5-7851-46b6-8f1b-0a355aec7e7d",
                             Name = "Nadredjeni",
                             NormalizedName = "NADREDJENI"
                         },
                         new
                         {
                             Id = "711E84F4-9AA5-42E0-8118-B25F4F6C2B12",
-                            ConcurrencyStamp = "a29fe9bc-729e-41ef-898a-bb6e4129283c",
+                            ConcurrencyStamp = "be955491-a976-46ef-8640-6bbba3e5829e",
                             Name = "Radnik",
                             NormalizedName = "RADNIK"
                         });

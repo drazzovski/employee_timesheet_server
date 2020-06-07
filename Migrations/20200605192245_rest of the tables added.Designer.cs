@@ -3,14 +3,16 @@ using System;
 using EmployeeTimesheet.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeTimesheet.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200605192245_rest of the tables added")]
+    partial class restofthetablesadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,9 +89,6 @@ namespace EmployeeTimesheet.Migrations
                         .HasColumnType("varchar(256) CHARACTER SET utf8mb4")
                         .HasMaxLength(256);
 
-                    b.Property<int?>("UserTypeID")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ApplicationUserID");
@@ -101,8 +100,6 @@ namespace EmployeeTimesheet.Migrations
                         .IsUnique()
                         .HasName("UserNameIndex");
 
-                    b.HasIndex("UserTypeID");
-
                     b.ToTable("AspNetUsers");
 
                     b.HasData(
@@ -113,7 +110,7 @@ namespace EmployeeTimesheet.Migrations
                             Address = "New Street 2",
                             BirthDate = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             City = "MD",
-                            ConcurrencyStamp = "02af0423-ff8a-4e47-9aed-6aedd6f35870",
+                            ConcurrencyStamp = "3231586c-3db4-401b-a6d5-564925e75c41",
                             Email = "arandjic@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "Master",
@@ -121,13 +118,12 @@ namespace EmployeeTimesheet.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ARANDJIC@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEM5UwrFyh9J5mq+OP3jXecpZD6Q9Uvg2rr1d9RgNo6FBf7faz6e45cfkyqw6sn+MXw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEADs1rK11sEghvwkhisSUuR9+y6NYFAMNZeLOdrYWaUmhaUVB4NCM7Cog6seb2mLaw==",
                             PhoneNumber = "0000",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "86BAA9B3-96C2-467B-8145-DB3196C54B9E",
+                            SecurityStamp = "07633F8D-D645-4495-B51C-2AD424E66390",
                             TwoFactorEnabled = false,
-                            UserName = "superadmin",
-                            UserTypeID = 1
+                            UserName = "superadmin"
                         });
                 });
 
@@ -181,37 +177,6 @@ namespace EmployeeTimesheet.Migrations
                         {
                             Id = 2,
                             Name = "Aktivnost"
-                        });
-                });
-
-            modelBuilder.Entity("EmployeeTimesheet.Models.UserType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Admin"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Nadredjeni"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Radnik"
                         });
                 });
 
@@ -278,21 +243,21 @@ namespace EmployeeTimesheet.Migrations
                         new
                         {
                             Id = "6CAC3ED9-597A-4319-87E4-1AB92823B152",
-                            ConcurrencyStamp = "7e0ce40a-9694-449b-ae60-9c423ddb3394",
+                            ConcurrencyStamp = "551838dc-233a-4e0a-9533-d715bbfb6ffd",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "9E91AA16-4C34-44DD-B9E3-27A7918E401E",
-                            ConcurrencyStamp = "e1bbacc7-737a-48a1-88df-121f4dee11f9",
+                            ConcurrencyStamp = "46d4f028-79e0-4648-bf1f-93a5bdd0a3c3",
                             Name = "Nadredjeni",
                             NormalizedName = "NADREDJENI"
                         },
                         new
                         {
                             Id = "711E84F4-9AA5-42E0-8118-B25F4F6C2B12",
-                            ConcurrencyStamp = "a29fe9bc-729e-41ef-898a-bb6e4129283c",
+                            ConcurrencyStamp = "2b8904cd-1f36-44b9-8171-b7bc157e2e84",
                             Name = "Radnik",
                             NormalizedName = "RADNIK"
                         });
@@ -412,10 +377,6 @@ namespace EmployeeTimesheet.Migrations
                     b.HasOne("EmployeeTimesheet.Models.ApplicationUser", "ApplicationUserNadredjeni")
                         .WithMany("Nadredjeni")
                         .HasForeignKey("ApplicationUserID");
-
-                    b.HasOne("EmployeeTimesheet.Models.UserType", "UserType")
-                        .WithMany()
-                        .HasForeignKey("UserTypeID");
                 });
 
             modelBuilder.Entity("EmployeeTimesheet.Models.RadniSati", b =>
