@@ -10,7 +10,7 @@ namespace EmployeeTimesheet.Services
     public interface IRadniSatiService
     {
         List<RadniSatiViewModel> GetRadniSati(string UserID = null);
-        void PostRadniSati(RadniSatiViewModel model);
+        RadniSatiViewModel PostRadniSati(RadniSatiViewModel model);
 
         void DeleteRadniSati(Guid id);
     }
@@ -56,13 +56,17 @@ namespace EmployeeTimesheet.Services
             return result;
         }
 
-        public void PostRadniSati(RadniSatiViewModel model)
+        public RadniSatiViewModel PostRadniSati(RadniSatiViewModel model)
         {
+
+            model.Id = Guid.NewGuid();
+            var datumunosa = DateTime.Now;
+            model.DatumUnosa = datumunosa.ToString("dd/MM/yyyy HH:mm");
 
             var radnisati = new RadniSati()
             {
-                Id = Guid.NewGuid(),
-                DatumUnosa = DateTime.Now,
+                Id = model.Id.Value,
+                DatumUnosa = datumunosa,
                 UserId = model.UserId,
                 ZadatakId = model.ZadatakId.Value,
                 UtrosenoVrijeme = new TimeSpan(model.Sati, model.Minute, 0).Ticks
@@ -70,6 +74,8 @@ namespace EmployeeTimesheet.Services
 
             _context.RadniSati.Add(radnisati);
             _context.SaveChanges();
+
+            return model;
         }
 
 

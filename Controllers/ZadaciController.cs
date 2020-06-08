@@ -42,19 +42,19 @@ namespace EmployeeTimesheet.Controllers
         [HttpPost]
         public async Task<IActionResult> PostZadatak(ZadatakViewModel model)
         {
+            var user = await _userService.GetUserByUserName(User.Identity.Name);
             if (model.IsEdit)
             {
                 _zadatakService.EditZadatak(model);
+                return Ok();
             }
             else
             {
-                var user = await _userService.GetUserByUserName(User.Identity.Name);
                 model.KreiranOd = user.Id;
-
-                _zadatakService.PostZadatak(model);
+                var data = _zadatakService.PostZadatak(model);
+                data.KreiranOd = user.FirstName + " " + user.LastName;
+                return Ok(data);
             }
-
-            return Ok();
         }
 
         [Route("deactivate")]

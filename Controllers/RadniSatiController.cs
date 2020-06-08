@@ -50,10 +50,12 @@ namespace EmployeeTimesheet.Controllers
         {
             var user = await _userService.GetUserByUserName(User.Identity.Name);
             model.UserId = user.Id;
+            model.User = user.FirstName + " " + user.LastName;
+            model.Aktivan = true;
 
-            _radniSati.PostRadniSati(model);
+            var data = _radniSati.PostRadniSati(model);
 
-            return Ok();
+            return Ok(data);
         }
 
         [Route("zadacidropdown")]

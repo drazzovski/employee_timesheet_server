@@ -13,7 +13,7 @@ namespace EmployeeTimesheet.Services
     {
         List<ZadatakViewModel> GetZadaci(string UserID = null);
 
-        void PostZadatak(ZadatakViewModel model);
+        ZadatakViewModel PostZadatak(ZadatakViewModel model);
         void EditZadatak(ZadatakViewModel model);
 
         List<ZadaciDropdown> ZadaciDropdown(string UserId);
@@ -55,22 +55,27 @@ namespace EmployeeTimesheet.Services
             return result;
         }
 
-        public void PostZadatak(ZadatakViewModel model)
+        public ZadatakViewModel PostZadatak(ZadatakViewModel model)
         {
-
+            model.Id = Guid.NewGuid();
+            var datum = DateTime.Now;
+            model.DatumKreiranja = datum.ToString("dd/MM/yyyy HH:mm");
+            model.Aktivan = true;
             var zadatak = new Zadatak()
             {
-                Id = Guid.NewGuid(),
+                Id = model.Id.Value,
                 Naziv = model.Naziv,
                 Opis = model.Opis,
                 TipId = int.Parse(model.Tip),
-                Aktivan = true,
-                DatumKreiranja = DateTime.Now,
+                Aktivan = model.Aktivan,
+                DatumKreiranja = datum,
                 KreiranOd = model.KreiranOd
             };
 
             _context.Zadaci.Add(zadatak);
             _context.SaveChanges();
+
+            return model;
         }
 
         public void EditZadatak(ZadatakViewModel model)
