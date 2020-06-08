@@ -57,5 +57,13 @@ namespace EmployeeTimesheet.Controllers
             return Ok();
         }
 
+        [Route("deactivate")]
+        [HttpPost]
+        public IActionResult Deactivate(ZadatakViewModel model)
+        {
+            _zadatakService.Deactivate(model.Id.Value);
+            return Ok();
+        }
+
     }
 }

@@ -17,6 +17,8 @@ namespace EmployeeTimesheet.Services
         void EditZadatak(ZadatakViewModel model);
 
         List<ZadaciDropdown> ZadaciDropdown(string UserId);
+
+        void Deactivate(Guid id);
     }
 
     public class ZadatakService : IZadatakService
@@ -100,6 +102,16 @@ namespace EmployeeTimesheet.Services
             }).ToList();
 
             return zadacidropdown;
+        }
+
+        public void Deactivate(Guid id)
+        {
+            var item = _context.Zadaci.FirstOrDefault(x => x.Id == id);
+            if (item != null)
+            {
+                item.Aktivan = false;
+                _context.SaveChanges();
+            }
         }
     }
 }
